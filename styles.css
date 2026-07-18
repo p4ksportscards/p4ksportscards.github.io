@@ -249,9 +249,23 @@ body {
 
 .chip-toggle { border-style: dashed; }
 
-.chip-clear { color: var(--clay); border-color: var(--clay); margin-left: auto; }
+.chip-clear {
+  color: var(--clay);
+  border-color: var(--clay);
+  margin-left: auto;
+  opacity: 0.4;
+  transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
 
-.chip-clear:hover { background: var(--clay); border-color: var(--clay); color: #14181d; }
+.chip-clear.armed {
+  opacity: 1;
+  background: var(--clay);
+  border-color: var(--clay);
+  color: #14181d;
+  box-shadow: 2px 2px 0 rgba(201, 116, 74, 0.35);
+}
+
+.chip-clear.armed:hover { background: #dd8757; }
 
 .result-count {
   font-family: var(--marker);

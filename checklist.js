@@ -17,6 +17,7 @@
   var ownMode = 'all';
   var flags = { sn: false, graded: false, intl: false };
   var shown = PAGE;
+  var clearBtn = document.getElementById('clear');
 
   function seasonLabel(s) {
     return s.replace(/-000$/, '');
@@ -109,6 +110,11 @@
 
     listEl.innerHTML = filtered.slice(0, shown).map(rowHtml).join('');
     moreBtn.hidden = filtered.length <= shown;
+
+    // Light up the Clear button only when a filter is active
+    var anyFilter = !!(q.value || seasonSel.value || mftSel.value || setSel.value ||
+      settypeSel.value || ownMode !== 'all' || flags.sn || flags.graded || flags.intl);
+    clearBtn.classList.toggle('armed', anyFilter);
   }
 
   function reset() { shown = PAGE; render(); }
@@ -145,7 +151,7 @@
     render();
   });
 
-  document.getElementById('clear').addEventListener('click', function () {
+  clearBtn.addEventListener('click', function () {
     q.value = '';
     seasonSel.value = '';
     mftSel.value = '';
