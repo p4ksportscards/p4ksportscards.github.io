@@ -145,5 +145,20 @@
     render();
   });
 
+  document.getElementById('clear').addEventListener('click', function () {
+    q.value = '';
+    seasonSel.value = '';
+    mftSel.value = '';
+    setSel.value = '';
+    settypeSel.value = '';
+    ownMode = 'all';
+    ownChips.forEach(function (c) {
+      c.classList.toggle('chip-active', c.getAttribute('data-own') === 'all');
+    });
+    flags = { sn: false, graded: false, intl: false };
+    flagChips.forEach(function (c) { c.classList.remove('chip-active'); });
+    reset();
+  });
+
   render();
 })();

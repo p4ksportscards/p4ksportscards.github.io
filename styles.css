@@ -249,6 +249,10 @@ body {
 
 .chip-toggle { border-style: dashed; }
 
+.chip-clear { color: var(--clay); border-color: var(--clay); margin-left: auto; }
+
+.chip-clear:hover { background: var(--clay); border-color: var(--clay); color: #14181d; }
+
 .result-count {
   font-family: var(--marker);
   color: var(--ink-soft);
