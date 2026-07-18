@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist — Playin' for Keeps Sports Cards</title>
+  <meta name="description" content="The full Shaq card checklist — every card, filterable by season, set, and manufacturer.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-mark">P4K</span>
+        <span class="logo-text">Playin' for Keeps<span class="logo-sub">Sports Cards</span></span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Collection</a>
+        <a href="checklist.html" class="active">Checklist</a>
+        <a href="#">History</a>
+        <a href="#">For Sale</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>The Checklist</h1>
+      <p class="hero-tag">every shaq card — the ones I've got, and the ones I'm hunting.</p>
+    </div>
+  </section>
+
+  <main class="wrap">
+
+    <div class="controls">
+      <input type="search" id="q" class="control control-search" placeholder="Search sets, card numbers, anything&hellip;">
+      <select id="season" class="control"><option value="">All seasons</option></select>
+      <select id="mft" class="control"><option value="">All manufacturers</option></select>
+      <select id="set" class="control"><option value="">All sets</option></select>
+      <select id="settype" class="control"><option value="">All card types</option></select>
+    </div>
+
+    <div class="filter-bar toggles">
+      <button class="chip chip-active" data-own="all">Everything</button>
+      <button class="chip" data-own="have">I have</button>
+      <button class="chip" data-own="want">Want list</button>
+      <span class="toggle-gap"></span>
+      <button class="chip chip-toggle" data-flag="sn">Serial #'d</button>
+      <button class="chip chip-toggle" data-flag="graded">Graded</button>
+      <button class="chip chip-toggle" data-flag="intl">International</button>
+    </div>
+
+    <p class="result-count" id="count"></p>
+    <div class="check-list" id="list"></div>
+    <button class="show-more" id="more" hidden>show more</button>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© 2026 Playin' for Keeps Sports Cards</p>
+      <p class="footer-tag">keep 'em forever.</p>
+    </div>
+  </footer>
+
+  <script src="data/shaq.js"></script>
+  <script src="checklist.js"></script>
+</body>
+</html>

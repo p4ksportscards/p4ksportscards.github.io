@@ -1,0 +1,476 @@
+/* =====================================================
+   Playin' for Keeps Sports Cards — street edition
+   Midnight blues + earth tones, spray-paint accents,
+   sticker-slapped cards. City at night, not a museum.
+   ===================================================== */
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/bebas-neue.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Permanent Marker';
+  src: url('fonts/permanent-marker.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #0b101a;            /* midnight ink-blue */
+  --bg-raised: #131b29;
+  --ink: #e7ecf4;
+  --ink-soft: #91a2b8;      /* concrete */
+  --spray: #4f9dff;         /* electric spray blue */
+  --spray-deep: #2b6fd4;
+  --clay: #c9744a;          /* rust / clay earth tone */
+  --line: #223047;
+  --radius: 10px;
+  --display: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --marker: 'Permanent Marker', 'Comic Sans MS', cursive;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg);
+  /* faint concrete-wall grain */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(11, 16, 26, 0.94);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+/* the P4K tag — a slapped sticker, marker on black */
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  background: #080b12;
+  border: 2px solid var(--spray);
+  color: var(--spray);
+  font-family: var(--marker);
+  font-size: 16px;
+  transform: rotate(-4deg);
+  box-shadow: 3px 3px 0 rgba(43, 111, 212, 0.35);
+}
+
+.logo-text {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 1px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.logo-sub {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 10px;
+  color: var(--ink-soft);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.site-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-family: var(--display);
+  font-size: 17px;
+  letter-spacing: 1.5px;
+  padding: 8px 12px 6px;
+}
+
+.site-nav a:hover { color: var(--ink); }
+
+/* active page gets a hand-drawn marker underline */
+.site-nav a.active {
+  color: var(--spray);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='6' viewBox='0 0 70 6'%3E%3Cpath d='M2 4 C 18 1.5, 40 5, 68 2.5' stroke='%234f9dff' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center bottom 2px;
+  background-size: 80% 6px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 64px 0 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft spray-can bloom behind the headline */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 420px 200px at 18% 55%, rgba(43, 111, 212, 0.22), transparent 70%),
+    radial-gradient(ellipse 260px 140px at 45% 30%, rgba(201, 116, 74, 0.10), transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  position: relative;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(56px, 10vw, 104px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 rgba(43, 111, 212, 0.45);
+}
+
+.hero-tag {
+  position: relative;
+  font-family: var(--marker);
+  color: var(--spray);
+  font-size: 19px;
+  margin-top: 14px;
+  max-width: 46ch;
+}
+
+/* ---------- Filter chips ---------- */
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 34px 0 4px;
+}
+
+.chip {
+  border: 1.5px solid var(--line);
+  background: var(--bg-raised);
+  color: var(--ink-soft);
+  font-family: var(--display);
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  padding: 7px 15px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chip:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+.chip-active {
+  background: var(--spray);
+  border-color: var(--spray);
+  color: #0a0f18;
+  transform: rotate(-2deg);
+  box-shadow: 2px 2px 0 rgba(43, 111, 212, 0.4);
+}
+
+.empty-note {
+  font-family: var(--marker);
+  color: var(--ink-soft);
+  font-size: 16px;
+  padding: 40px 0 24px;
+}
+
+/* ---------- Checklist controls & rows ---------- */
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+  padding: 30px 0 4px;
+}
+
+.control {
+  background: var(--bg-raised);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 14px;
+  padding: 10px 12px;
+}
+
+.control:focus { outline: 2px solid var(--spray); outline-offset: 1px; }
+
+.control-search { grid-column: 1 / -1; }
+
+.toggles { padding-top: 12px; }
+
+.toggle-gap { flex: 1; }
+
+.chip-toggle { border-style: dashed; }
+
+.result-count {
+  font-family: var(--marker);
+  color: var(--ink-soft);
+  font-size: 14px;
+  padding: 18px 0 10px;
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.check-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.check-main strong { font-size: 15px; line-height: 1.3; }
+
+.check-sub { font-size: 12.5px; color: var(--ink-soft); }
+
+.check-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+
+.badge.b-sn { color: var(--spray); border-color: var(--spray); }
+.badge.b-graded { color: #7fc98a; border-color: #3d6a46; }
+.badge.b-intl { color: var(--clay); border-color: var(--clay); }
+
+.pill {
+  font-family: var(--marker);
+  font-size: 13px;
+  white-space: nowrap;
+  padding: 3px 12px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.pill-have { background: rgba(79, 157, 255, 0.14); color: var(--spray); }
+.pill-want { background: rgba(201, 116, 74, 0.14); color: var(--clay); }
+
+.show-more {
+  display: block;
+  margin: 0 auto 56px;
+  background: transparent;
+  border: 1.5px solid var(--spray);
+  color: var(--spray);
+  font-family: var(--display);
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  padding: 9px 26px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.show-more:hover { background: var(--spray); color: #0a0f18; }
+
+/* ---------- Card grid ---------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 28px 0 56px;
+  align-items: start;
+}
+
+/* cards slap on the wall slightly crooked, straighten on touch */
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transform: rotate(0.9deg);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:nth-child(even) { transform: rotate(-0.9deg); }
+
+.card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  border-color: var(--spray);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--spray);
+}
+
+/* the scan images: front & back on black, straight from the scanner */
+.card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #060809;
+}
+
+.card.scan { cursor: zoom-in; }
+
+.card figcaption {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card figcaption strong {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+.card figcaption span {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* little marker-pen annotations: rookie, for sale */
+.mark-note {
+  font-family: var(--marker);
+  font-style: normal;
+  font-size: 12px;
+  color: var(--spray);
+}
+
+.mark-note.sale { color: var(--clay); }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 44px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-tag {
+  font-family: var(--marker);
+  color: var(--spray);
+  font-size: 15px;
+}
+
+/* ---------- Lightbox (click-to-enlarge) ---------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 6, 10, 0.94);
+  display: none;
+  place-items: center;
+  z-index: 50;
+  cursor: zoom-out;
+  padding: 18px;
+}
+
+.lightbox.open { display: grid; }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 92vh;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.lightbox-hint {
+  position: fixed;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--marker);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Phone screens ---------- */
+
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .hero { padding-top: 40px; }
+
+  .site-nav a { padding: 8px 8px 6px; font-size: 16px; }
+}
+
+/* respect users who turn off motion effects */
+@media (prefers-reduced-motion: reduce) {
+  .card, .chip { transition: none; }
+}
