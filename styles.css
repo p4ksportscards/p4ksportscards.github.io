@@ -20,6 +20,15 @@
   font-display: swap;
 }
 
+/* headline tag font — "A Dripping Marker" by Wick van den Belt (dafont) */
+@font-face {
+  font-family: 'A Dripping Marker';
+  src: url('fonts/a-dripping-marker.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #0b101a;            /* midnight ink-blue */
   --bg-raised: #131b29;
@@ -31,6 +40,7 @@
   --line: #223047;
   --radius: 10px;
   --display: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --graffiti: 'A Dripping Marker', 'Permanent Marker', cursive;
   --marker: 'Permanent Marker', 'Comic Sans MS', cursive;
   --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -164,10 +174,10 @@ body {
 
 .hero h1 {
   position: relative;
-  font-family: var(--display);
+  font-family: var(--graffiti);
   font-weight: 400;
-  font-size: clamp(56px, 10vw, 104px);
-  line-height: 0.95;
+  font-size: clamp(40px, 8vw, 84px);
+  line-height: 1.05;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 4px 4px 0 rgba(43, 111, 212, 0.45);
