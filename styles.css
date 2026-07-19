@@ -647,6 +647,11 @@ a.panel:hover {
 
 .plug-dom { font-size: 12px; color: var(--spray); }
 
+/* the P4K store card gets the clay treatment */
+.plug-card.plug-mine { border: 1.5px solid var(--clay); }
+.plug-card.plug-mine:hover { border-color: var(--clay); box-shadow: 3px 3px 0 rgba(201, 116, 74, 0.35); }
+.plug-card.plug-mine .plug-dom { color: var(--clay); }
+
 .plug-card p { font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; }
 
 /* ---------- Footer ---------- */
@@ -671,6 +676,15 @@ a.panel:hover {
   color: var(--spray);
   font-size: 15px;
 }
+
+.footer-ebay {
+  font-family: var(--marker);
+  color: var(--clay);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-ebay:hover { text-decoration: underline; }
 
 /* ---------- Lightbox (click-to-enlarge) ---------- */
 
