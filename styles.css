@@ -378,11 +378,18 @@ a.panel:hover {
 
 /* ---------- Checklist controls & rows ---------- */
 
+.collection-bar { padding-top: 30px; }
+
+.chip-coll {
+  font-size: 17px;
+  padding: 9px 18px 7px;
+}
+
 .controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 10px;
-  padding: 30px 0 4px;
+  padding: 18px 0 4px;
 }
 
 .control {

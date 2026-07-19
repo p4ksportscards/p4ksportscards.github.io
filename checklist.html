@@ -30,14 +30,21 @@
   <section class="hero">
     <div class="wrap">
       <h1>The Checklist</h1>
-      <p class="hero-tag">every shaq card — the ones I've got, and the ones I'm hunting.</p>
+      <p class="hero-tag">every card — the ones I've got, and the ones I'm hunting.</p>
     </div>
   </section>
 
   <main class="wrap">
 
+    <div class="filter-bar collection-bar">
+      <button class="chip chip-coll chip-active" data-coll="shaq">Shaq</button>
+      <button class="chip chip-coll" data-coll="rookies">Rookies</button>
+      <button class="chip chip-coll" data-coll="ej">Ernie Johnson</button>
+    </div>
+
     <div class="controls">
-      <input type="search" id="q" class="control control-search" placeholder="Search sets, card numbers, anything&hellip;">
+      <input type="search" id="q" class="control control-search" placeholder="Search players, sets, card numbers, anything&hellip;">
+      <select id="player" class="control" hidden><option value="">All players</option></select>
       <select id="season" class="control"><option value="">All seasons</option></select>
       <select id="mft" class="control"><option value="">All manufacturers</option></select>
       <select id="set" class="control"><option value="">All sets</option></select>
