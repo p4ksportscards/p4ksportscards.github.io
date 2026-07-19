@@ -286,22 +286,34 @@ a.panel:hover {
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
 }
 
-.panel-art { position: absolute; inset: 0; background-size: cover; background-position: center right; }
-
-.panel-art::after {
-  content: "";
+/* the wall glows with each card's own blurred colors */
+.panel-art {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(11,16,26,0.96) 30%, rgba(11,16,26,0.55) 60%, rgba(11,16,26,0.25) 100%);
+  inset: -40px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(28px) brightness(0.42) saturate(1.15);
 }
 
-.p-shaq .panel-art { background-image: url('images/cards/thumbs/2023-obsidian-10-reggae.jpg'); }
-.p-rookies .panel-art { background-image: url('images/cards/thumbs/rookie-2024-court-kings-knecht.jpg'); }
-.p-ej .panel-art { background-image: url('images/cards/thumbs/ej-1953-johnston-cookies.jpg'); }
+.p-shaq .panel-art { background-image: url('images/panels/front-shaq.jpg'); }
+.p-rookies .panel-art { background-image: url('images/panels/front-rookies.jpg'); }
+.p-ej .panel-art { background-image: url('images/panels/front-ej.jpg'); }
+
+/* the card front, propped against the wall — never covered by text */
+.card-prop {
+  position: absolute;
+  z-index: 1;
+  right: 4.5%;
+  top: 50%;
+  transform: translateY(-50%) rotate(2.2deg);
+  height: 82%;
+  border-radius: 6px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 3px 8px rgba(0, 0, 0, 0.5);
+}
 
 .panel-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: 34px 30px 30px;
   max-width: 60%;
   min-height: 250px;
@@ -365,9 +377,7 @@ a.panel:hover {
 @media (max-width: 640px) {
   .panel-inner { max-width: 100%; padding: 26px 20px; }
 
-  .panel-art::after {
-    background: linear-gradient(90deg, rgba(11,16,26,0.94) 45%, rgba(11,16,26,0.6) 100%);
-  }
+  .card-prop { opacity: 0.28; right: -6%; }
 
   .stats { gap: 22px; }
 
