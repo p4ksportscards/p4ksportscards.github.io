@@ -296,7 +296,7 @@ a.panel:hover {
 }
 
 .p-shaq .panel-art { background-image: url('images/cards/thumbs/2023-obsidian-10-reggae.jpg'); }
-.p-rookies .panel-art { background: linear-gradient(130deg, #1d3050 0%, #24403c 55%, #35402f 100%); }
+.p-rookies .panel-art { background-image: url('images/cards/thumbs/rookie-2024-court-kings-knecht.jpg'); }
 .p-ej .panel-art { background: linear-gradient(130deg, #45372e 0%, #4a3226 50%, #2c3b5e 100%); }
 
 .panel-inner {
