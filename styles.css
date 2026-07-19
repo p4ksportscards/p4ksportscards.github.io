@@ -595,6 +595,60 @@ a.panel:hover {
 
 .mark-note.sale { color: var(--clay); }
 
+/* ---------- The Plug (links page) ---------- */
+
+.plug-section { padding: 26px 0 6px; }
+
+.plug-section:last-of-type { padding-bottom: 56px; }
+
+.plug-h {
+  font-family: var(--marker);
+  font-weight: 400;
+  color: var(--spray);
+  font-size: 21px;
+  margin-bottom: 14px;
+  transform: rotate(-0.8deg);
+  display: inline-block;
+}
+
+.plug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+}
+
+.plug-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  transform: rotate(0.35deg);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.plug-card:nth-child(even) { transform: rotate(-0.35deg); }
+
+.plug-card:hover {
+  transform: rotate(0deg) translateY(-3px);
+  border-color: var(--spray);
+}
+
+.plug-card strong {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.plug-dom { font-size: 12px; color: var(--spray); }
+
+.plug-card p { font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; }
+
 /* ---------- Footer ---------- */
 
 .site-footer {
