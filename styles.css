@@ -326,8 +326,6 @@ a.panel:hover {
 
 .panel-tag { font-family: var(--marker); color: var(--spray); font-size: 15px; }
 
-.p-rookies .panel-tag, .p-ej .panel-tag { color: var(--clay); }
-
 .panel-count {
   font-family: var(--display);
   font-size: 15px;
