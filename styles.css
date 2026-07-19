@@ -96,34 +96,34 @@ body {
 .logo-mark {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 6px;
+  width: 56px;
+  height: 56px;
+  border-radius: 7px;
   background: #080b12;
   border: 2px solid var(--spray);
   color: var(--spray);
   font-family: var(--marker);
-  font-size: 16px;
+  font-size: 19px;
   transform: rotate(-4deg);
   box-shadow: 3px 3px 0 rgba(43, 111, 212, 0.35);
 }
 
 .logo-text {
   font-family: var(--graffiti);
-  font-size: 19px;
+  font-size: 23px;
   letter-spacing: 1.5px;
   line-height: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .logo-sub {
   font-family: var(--body);
   font-weight: 600;
-  font-size: 10px;
+  font-size: 11.5px;
   color: var(--ink-soft);
-  letter-spacing: 3px;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
 }
 
