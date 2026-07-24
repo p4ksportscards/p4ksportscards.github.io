@@ -1,4 +1,4 @@
-window.SHAQ_DATA = ﻿[
+﻿window.SHAQ_DATA = [
     {
         "type":  "",
         "season":  "1990-91",
