@@ -316,6 +316,26 @@ a.panel:hover {
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 3px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Ernie Johnson panel carries two cards — father and son, leaned together.
+   Sr. sits back and left, Jr. overlaps in front on the right. */
+.p-ej .card-prop {
+  right: 21%;
+  transform: translateY(-50%) rotate(-3deg);
+}
+
+.card-prop-2 {
+  position: absolute;
+  z-index: 2;
+  right: 4.5%;
+  top: 50%;
+  transform: translateY(-50%) rotate(2.6deg);
+  height: 82%;
+  border-radius: 6px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.p-ej .panel-inner { max-width: 46%; }
+
 .panel-inner {
   position: relative;
   z-index: 2;
@@ -328,6 +348,9 @@ a.panel:hover {
   justify-content: center;
   gap: 10px;
 }
+
+/* panels with no card scan yet: let the text use the full width */
+.panel.no-prop .panel-inner { max-width: 100%; }
 
 .panel h2 {
   font-family: var(--graffiti);
@@ -379,10 +402,27 @@ a.panel:hover {
 
 .about b { color: var(--ink); }
 
+/* multi-paragraph page intro (Cameos) — same voice as .about, tighter rhythm */
+.intro {
+  max-width: 640px;
+  padding: 4px 0 30px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.intro p + p { margin-top: 15px; }
+
+.intro b { color: var(--ink); }
+
 @media (max-width: 640px) {
   .panel-inner { max-width: 100%; padding: 26px 20px; }
 
   .card-prop { opacity: 0.28; right: -6%; }
+
+  /* on a phone the cards become faint backdrop, so one is plenty */
+  .card-prop-2 { display: none; }
+  .p-ej .panel-inner { max-width: 100%; }
+  .p-ej .card-prop { right: -6%; transform: translateY(-50%) rotate(2.2deg); }
 
   .stats { gap: 22px; }
 
@@ -396,6 +436,17 @@ a.panel:hover {
 .chip-coll {
   font-size: 17px;
   padding: 9px 18px 7px;
+}
+
+/* explainer that appears when a collection needs context (e.g. Cameos) */
+.coll-note {
+  font-family: var(--marker);
+  font-size: 14.5px;
+  color: var(--clay);
+  border-left: 3px solid var(--clay);
+  padding: 2px 0 2px 12px;
+  margin-top: 16px;
+  max-width: 62ch;
 }
 
 .controls {

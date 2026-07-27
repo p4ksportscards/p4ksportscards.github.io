@@ -5,7 +5,9 @@
   var COLLECTIONS = {
     shaq:    { global: 'SHAQ_DATA',    file: 'data/shaq.js',    multiPlayer: false },
     rookies: { global: 'ROOKIES_DATA', file: 'data/rookies.js', multiPlayer: true },
-    ej:      { global: 'EJ_DATA',      file: 'data/ej.js',      multiPlayer: true }
+    ej:      { global: 'EJ_DATA',      file: 'data/ej.js',      multiPlayer: true },
+    cameos:  { global: 'CAMEOS_DATA',  file: 'data/cameos.js',  multiPlayer: true,
+               note: 'These are other players’ cards — Shaq just happens to be in the photo. That’s why they’re filed under someone else’s name.' }
   };
 
   var q = document.getElementById('q');
@@ -21,6 +23,7 @@
   var ownChips = document.querySelectorAll('.chip[data-own]');
   var flagChips = document.querySelectorAll('.chip[data-flag]');
   var collChips = document.querySelectorAll('.chip[data-coll]');
+  var noteEl = document.getElementById('collNote');
 
   var current = 'shaq';
   var data = window.SHAQ_DATA || [];
@@ -158,6 +161,11 @@
     current = key;
     data = window[COLLECTIONS[key].global] || [];
     collChips.forEach(function (c) { c.classList.toggle('chip-active', c.getAttribute('data-coll') === key); });
+    if (noteEl) {
+      var note = COLLECTIONS[key].note || '';
+      noteEl.textContent = note;
+      noteEl.hidden = !note;
+    }
     initDropdowns();
     clearFilters();
   }
