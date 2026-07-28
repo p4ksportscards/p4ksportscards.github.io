@@ -1,1 +1,1 @@
-window.P4K_STATS = {"shaq":{"cards":12156,"have":2234,"want":1343},"rookies":{"cards":2216,"have":771,"want":185},"ej":{"cards":102,"have":60,"want":17},"cameos":{"cards":465,"have":171,"want":145},"total":{"cards":14939,"have":3236,"want":1690,"collections":4}};
+window.P4K_STATS = {"shaq":{"cards":12156,"have":2238,"want":1341},"rookies":{"cards":2216,"have":771,"want":185},"ej":{"cards":102,"have":60,"want":17},"cameos":{"cards":465,"have":171,"want":145},"total":{"cards":14939,"have":3240,"want":1688,"collections":4}};

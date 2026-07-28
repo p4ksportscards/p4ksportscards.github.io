@@ -327,12 +327,18 @@ a.chip { display: inline-block; text-decoration: none; }
 .rot-zone.l:hover { background: linear-gradient(90deg,  rgba(43, 111, 212, 0.45), transparent); }
 .rot-zone.r:hover { background: linear-gradient(270deg, rgba(43, 111, 212, 0.45), transparent); }
 
+/* Sized so eleven thumbnails span the full 1060px without spilling. Landscape
+   cards run about double the width of portrait ones, so the fit depends on the
+   line-up, not just the count — overflow-x is the safety net if a future pick
+   leans wide. */
 .rot-thumbs {
   display: flex;
-  gap: 10px;
+  gap: 6px;
   margin-top: 14px;
   padding: 4px 2px 8px;
   justify-content: space-between;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .rot-thumbs button {
@@ -349,7 +355,7 @@ a.chip { display: inline-block; text-decoration: none; }
 
 .rot-thumbs button:hover { opacity: 0.9; transform: translateY(-3px); }
 .rot-thumbs button.on { opacity: 1; border-color: var(--spray); }
-.rot-thumbs img { height: 118px; width: auto; border-radius: 3px; display: block; }
+.rot-thumbs img { height: 104px; width: auto; border-radius: 3px; display: block; }
 
 @media (max-width: 700px) {
   .rot-stage { grid-template-columns: 1fr; padding: 26px 22px; min-height: 0; }

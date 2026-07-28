@@ -37,24 +37,65 @@
     if (e.key === 'Escape') close();
   });
 
-  // Filter chips: show only cards tagged with the chosen subcollection.
+  // ---- gallery: subcollection filters + show-more ----
+  //
+  // Galleries used to render every card at once. Lazy loading meant a visitor
+  // only downloaded what they scrolled past, but the page still got very long —
+  // one column on a phone, so 50 cards is about 20 screens. Showing a batch at
+  // a time keeps that manageable however many cards a gallery ends up holding.
+  var PAGE = 24;
+
   var chips = document.querySelectorAll('.chip[data-filter]');
-  var cards = document.querySelectorAll('.card.scan');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card.scan'));
   var emptyNote = document.querySelector('.empty-note');
+  var grid = document.querySelector('.card-grid');
+  if (!cards.length || !grid) return;
+
+  var filter = 'all';
+  var shown = PAGE;
+  var moreBtn = null;
+
+  function matching() {
+    return cards.filter(function (card) {
+      if (filter === 'all') return true;
+      return (card.getAttribute('data-cats') || '').split(' ').indexOf(filter) !== -1;
+    });
+  }
+
+  function render() {
+    var hits = matching();
+    cards.forEach(function (c) { c.style.display = 'none'; });
+    hits.slice(0, shown).forEach(function (c) { c.style.display = ''; });
+
+    if (emptyNote && !emptyNote.classList.contains('coll-note')) {
+      emptyNote.hidden = hits.length > 0;
+    }
+    if (moreBtn) {
+      var left = hits.length - shown;
+      moreBtn.hidden = left <= 0;
+      moreBtn.textContent = left > 0
+        ? 'show ' + Math.min(left, PAGE) + ' more' + (left > PAGE ? ' of ' + left : '')
+        : '';
+    }
+  }
+
+  if (cards.length > PAGE) {
+    moreBtn = document.createElement('button');
+    moreBtn.className = 'show-more';
+    moreBtn.type = 'button';
+    grid.parentNode.insertBefore(moreBtn, grid.nextSibling);
+    moreBtn.addEventListener('click', function () { shown += PAGE; render(); });
+  }
 
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       chips.forEach(function (c) { c.classList.remove('chip-active'); });
       chip.classList.add('chip-active');
-      var filter = chip.getAttribute('data-filter');
-      var visible = 0;
-      cards.forEach(function (card) {
-        var cats = (card.getAttribute('data-cats') || '').split(' ');
-        var show = filter === 'all' || cats.indexOf(filter) !== -1;
-        card.style.display = show ? '' : 'none';
-        if (show) visible++;
-      });
-      if (emptyNote) emptyNote.hidden = visible > 0;
+      filter = chip.getAttribute('data-filter');
+      shown = PAGE;          // a new filter starts from the top
+      render();
     });
   });
+
+  render();
 })();
