@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Playin' for Keeps Sports Cards</title>
-  <meta name="description" content="One collector's wall — Shaq, rookies, and the Ernie Johnson family collection.">
+  <meta name="description" content="One collector's wall — a Shaq collection, the cameos, rookie cards, and the Ernie Johnson family collection, all catalogued.">
   <!-- Soft launch: keep the site out of search engines until we're ready. Remove this line to go fully public. -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="styles.css">
@@ -19,10 +19,7 @@
       </a>
       <nav class="site-nav">
         <a href="index.html" class="active">Home</a>
-        <a href="shaq.html">Shaq</a>
-        <a href="cameos.html">Cameos</a>
-        <a href="rookies.html">Rookies</a>
-        <a href="ej.html">Ernie Johnson</a>
+        <a href="collections.html">Collections</a>
         <a href="checklist.html">Checklist</a>
         <a href="blog.html">The Wire</a>
         <a href="plug.html">The Plug</a>
@@ -32,66 +29,88 @@
 
   <section class="hero">
     <div class="wrap">
-      <h1>The Collections</h1>
-      <p class="hero-tag">one wall — every card that matters.</p>
+      <h1>Playin' for Keeps</h1>
+      <p class="hero-tag">started with shaq. never really stopped.</p>
       <div class="stats">
-        <div class="stat"><b>2,234</b><span>shaq cards owned</span></div>
-        <div class="stat"><b>12,156</b><span>shaq cards catalogued</span></div>
-        <div class="stat"><b>1,343</b><span>still hunting</span></div>
-        <div class="stat"><b>171</b><span>cameos in hand</span></div>
+        <div class="stat"><b data-stat="total.cards">14,939</b><span>cards catalogued</span></div>
+        <div class="stat"><b data-stat="total.have">3,236</b><span>in hand</span></div>
+        <div class="stat"><b data-stat="total.want">1,690</b><span>still hunting</span></div>
+        <div class="stat"><b data-stat="total.collections">4</b><span>collections</span></div>
       </div>
     </div>
   </section>
 
   <main class="wrap">
-    <div class="wall">
 
-      <a class="panel p-shaq" href="shaq.html">
+    <div class="wall">
+      <a class="panel p-all two-up" href="collections.html">
         <div class="panel-art"></div>
         <img class="card-prop" src="images/panels/front-shaq.jpg" alt="2023-24 Obsidian Shaquille O'Neal card front" loading="lazy">
+        <img class="card-prop-2" src="images/panels/front-cameos.jpg" alt="1995-96 Hoops Michael Jordan card front, with Shaquille O'Neal in the photo" loading="lazy">
         <div class="panel-inner">
-          <h2>Shaq</h2>
-          <p class="panel-tag">the main event — base, inserts, internationals, graded, oddballs, cameos.</p>
-          <p class="panel-count">2,234 IN HAND · 12,156 CATALOGUED</p>
-          <span class="enter">STEP INSIDE</span>
+          <h2>The Collections</h2>
+          <p class="panel-tag">four walls' worth — shaq, the cameos, the rookies, and the johnsons.</p>
+          <p class="panel-count">START HERE</p>
+          <span class="enter">SEE THE WALL</span>
         </div>
       </a>
+    </div>
 
-      <a class="panel p-cameos" href="cameos.html">
-        <div class="panel-art"></div>
-        <img class="card-prop" src="images/panels/front-cameos.jpg" alt="1995-96 Hoops Michael Jordan card front, with Shaquille O'Neal in the photo" loading="lazy">
-        <div class="panel-inner">
-          <h2>Cameos</h2>
-          <p class="panel-tag">somebody else's card. shaq stole the scene anyway.</p>
-          <p class="panel-count">465 CATALOGUED · 171 IN HAND</p>
-          <span class="enter">STEP INSIDE</span>
-        </div>
+    <section class="plug-section">
+    <h2 class="plug-h">The tally</h2>
+    <div class="tally">
+
+      <a class="tally-row" href="shaq.html">
+        <span class="tally-name">Shaq</span>
+        <span class="tally-bar" data-bar="shaq" aria-hidden="true"><i style="width:18.4%"></i></span>
+        <span class="tally-num"><b data-stat="shaq.have">2,234</b><span>of <span data-stat="shaq.cards">12,156</span> catalogued</span></span>
+        <span class="tally-want"><span data-stat="shaq.want">1,343</span> still hunting</span>
       </a>
 
-      <a class="panel p-rookies" href="rookies.html">
-        <div class="panel-art"></div>
-        <img class="card-prop" src="images/panels/front-rookies.jpg" alt="2023-24 Court Kings Works In Progress Victor Wembanyama card front" loading="lazy">
-        <div class="panel-inner">
-          <h2>Rookies</h2>
-          <p class="panel-tag">first-year cards of the players worth remembering.</p>
-          <p class="panel-count">BASKETBALL · FOOTBALL · BASEBALL</p>
-          <span class="enter">STEP INSIDE</span>
-        </div>
+      <a class="tally-row" href="rookies.html">
+        <span class="tally-name">Rookies</span>
+        <span class="tally-bar" data-bar="rookies" aria-hidden="true"><i style="width:34.8%"></i></span>
+        <span class="tally-num"><b data-stat="rookies.have">771</b><span>of <span data-stat="rookies.cards">2,216</span> catalogued</span></span>
+        <span class="tally-want"><span data-stat="rookies.want">185</span> still hunting</span>
       </a>
 
-      <a class="panel p-ej" href="ej.html">
-        <div class="panel-art"></div>
-        <img class="card-prop" src="images/panels/front-ej.jpg" alt="1953 Johnston Cookies Ernie Johnson Sr. card front" loading="lazy">
-        <img class="card-prop-2" src="images/panels/front-ej-jr.jpg" alt="1990-91 Hoops Ernie Johnson Jr. card front" loading="lazy">
-        <div class="panel-inner">
-          <h2>Ernie Johnson</h2>
-          <p class="panel-tag">senior &amp; junior — it's a family thing.</p>
-          <p class="panel-count">TWO GENERATIONS, ONE COLLECTION</p>
-          <span class="enter">STEP INSIDE</span>
-        </div>
+      <a class="tally-row" href="cameos.html">
+        <span class="tally-name">Cameos</span>
+        <span class="tally-bar" data-bar="cameos" aria-hidden="true"><i style="width:36.8%"></i></span>
+        <span class="tally-num"><b data-stat="cameos.have">171</b><span>of <span data-stat="cameos.cards">465</span> catalogued</span></span>
+        <span class="tally-want"><span data-stat="cameos.want">145</span> still hunting</span>
+      </a>
+
+      <a class="tally-row" href="ej.html">
+        <span class="tally-name">The Johnsons</span>
+        <span class="tally-bar" data-bar="ej" aria-hidden="true"><i style="width:58.8%"></i></span>
+        <span class="tally-num"><b data-stat="ej.have">60</b><span>of <span data-stat="ej.cards">102</span> catalogued</span></span>
+        <span class="tally-want"><span data-stat="ej.want">17</span> still hunting</span>
       </a>
 
     </div>
+    </section>
+
+    <section class="plug-section">
+    <h2 class="plug-h">Elsewhere on the site</h2>
+    <div class="plug-grid">
+      <a class="plug-card" href="checklist.html">
+        <strong>The Checklist</strong>
+        <span class="plug-dom">every card, searchable</span>
+        <p>All 14,939 of them — what's in hand, what's still out there. Filter by season, set, manufacturer, serial number, grade. Works on your phone.</p>
+      </a>
+      <a class="plug-card" href="blog.html">
+        <strong>The Wire</strong>
+        <span class="plug-dom">hobby history &amp; hot takes</span>
+        <p>The longer stuff — how basketball cards printed themselves into a hole, and the draft class that produced five Hall of Famers.</p>
+      </a>
+      <a class="plug-card" href="plug.html">
+        <strong>The Plug</strong>
+        <span class="plug-dom">the sites worth knowing</span>
+        <p>Where to price a card, who to send it to for grading, which catalogs actually have the checklist you need.</p>
+      </a>
+    </div>
+    </section>
 
     <p class="about"><b>Playin' for Keeps</b> is one collector's wall — the cards I chased, the cards I keep, and the ones I'm still hunting. Started with Shaq. Never really stopped.</p>
   </main>
@@ -105,5 +124,7 @@
     </div>
   </footer>
 
+  <script src="data/stats.js"></script>
+  <script src="tally.js"></script>
 </body>
 </html>
