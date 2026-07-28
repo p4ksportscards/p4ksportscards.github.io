@@ -28,13 +28,19 @@
     if (n !== null) el.textContent = comma(n);
   });
 
-  // bar width = how much of that collection's catalogue is in hand
+  // The bar splits the WANT LIST - in hand vs still hunting - not the whole
+  // catalogue. A player collection has no finish line, so measuring against
+  // every card ever catalogued would invent one.
   document.querySelectorAll('[data-bar]').forEach(function (el) {
     var key = el.getAttribute('data-bar');
     var have = value(key + '.have');
-    var cards = value(key + '.cards');
-    var fill = el.querySelector('i');
-    if (!fill || have === null || !cards) return;
-    fill.style.width = Math.min(100, (have / cards) * 100).toFixed(1) + '%';
+    var want = value(key + '.want');
+    var got = el.querySelector('.got');
+    var need = el.querySelector('.need');
+    if (!got || !need || have === null || want === null) return;
+    var list = have + want;
+    if (!list) return;
+    got.style.width = ((have / list) * 100).toFixed(1) + '%';
+    need.style.width = ((want / list) * 100).toFixed(1) + '%';
   });
 })();
