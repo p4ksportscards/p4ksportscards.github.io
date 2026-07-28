@@ -31,12 +31,6 @@
     <div class="wrap">
       <h1>Playin' for Keeps</h1>
       <p class="hero-tag">started with shaq. never really stopped.</p>
-      <div class="stats">
-        <div class="stat"><b data-stat="total.cards">14,939</b><span>cards catalogued</span></div>
-        <div class="stat"><b data-stat="total.have">3,236</b><span>in hand</span></div>
-        <div class="stat"><b data-stat="total.want">1,690</b><span>still hunting</span></div>
-        <div class="stat"><b data-stat="total.collections">4</b><span>collections</span></div>
-      </div>
     </div>
   </section>
 
@@ -55,6 +49,16 @@
         </div>
       </a>
     </div>
+
+
+    <form class="home-search" action="checklist.html" method="get" role="search">
+      <div class="search-pill">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21" stroke-linecap="round"/>
+        </svg>
+        <input type="search" name="q" placeholder="checklist search" aria-label="Search the checklist" autocomplete="off">
+      </div>
+    </form>
 
     <section class="plug-section">
     <h2 class="plug-h">The Box Score</h2>
@@ -112,6 +116,17 @@
     </section>
 
     <section class="plug-section">
+    <h2 class="plug-h">The Rotation</h2>
+    <div class="rot-stage" id="rotStage" tabindex="0" aria-roledescription="carousel" aria-label="Favourite Shaq cards">
+      <button class="rot-zone l" id="rotPrev" type="button" aria-label="Previous card"></button>
+      <div id="rotInfo"></div>
+      <img class="rot-card" id="rotCard" alt="">
+      <button class="rot-zone r" id="rotNext" type="button" aria-label="Next card"></button>
+    </div>
+    <div class="rot-thumbs" id="rotThumbs"></div>
+    </section>
+
+    <section class="plug-section">
     <h2 class="plug-h">The Bench</h2>
     <div class="plug-grid">
       <a class="plug-card" href="checklist.html">
@@ -146,5 +161,7 @@
 
   <script src="data/stats.js"></script>
   <script src="tally.js"></script>
+  <script src="data/favs.js"></script>
+  <script src="rotation.js"></script>
 </body>
 </html>

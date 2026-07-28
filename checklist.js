@@ -251,6 +251,15 @@
     render();
   });
 
+  // The homepage search posts here as checklist.html?q=… so arriving from it
+  // lands you on results rather than an empty page.
+  (function () {
+    var m = /[?&]q=([^&]*)/.exec(window.location.search);
+    if (!m) return;
+    try { q.value = decodeURIComponent(m[1].replace(/\+/g, ' ')); } catch (e) { return; }
+    if (q.value) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
+  })();
+
   initDropdowns();
   render();
 })();

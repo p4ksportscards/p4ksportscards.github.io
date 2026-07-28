@@ -233,32 +233,187 @@ a.chip { display: inline-block; text-decoration: none; }
   padding: 40px 0 24px;
 }
 
-/* ---------- Stats strip + collection panels ---------- */
+/* ---------- The Rotation: favourite Shaqs on the homepage ----------
+   Blackout stage — near-black with one spray-blue shaft cutting behind the
+   card. Every word on it comes from the spreadsheet via data/favs.js.
+   Stepping happens on invisible 96px zones down each edge; the thumbnail
+   strip is the visible affordance. Arrows were tried and dropped — they
+   pulled attention off the cards. ------------------------------------- */
 
-.stats {
-  display: flex;
-  gap: 34px;
-  flex-wrap: wrap;
-  padding: 26px 0 8px;
+.rot-stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 430px;
+  padding: 34px 40px;
+  border-radius: 12px;
+  background: #04060a;
+  border: 1px solid #16202e;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: center;
 }
 
-.stat { display: flex; flex-direction: column; }
-
-.stat b {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
+.rot-stage::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -10%;
+  width: 70%;
+  height: 170%;
+  background: linear-gradient(180deg, rgba(43, 111, 212, 0.30), rgba(43, 111, 212, 0));
+  transform: rotate(14deg);
+  filter: blur(2px);
 }
 
-.stat span {
+.rot-stage > * { position: relative; z-index: 1; }
+
+.rot-card {
+  height: 340px;
+  width: auto;
+  border-radius: 6px;
+  transform: rotate(3deg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  justify-self: end;
+}
+
+.rot-year {
+  font-family: var(--graffiti);
+  font-size: clamp(40px, 7.4vw, 88px);
+  line-height: 0.92;
+  text-transform: uppercase;
+  text-shadow: 5px 5px 0 rgba(43, 111, 212, 0.5);
+}
+
+.rot-set {
   font-family: var(--marker);
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin-top: 4px;
+  color: var(--spray);
+  font-size: 16px;
+  margin-top: 12px;
+  max-width: 40ch;
 }
+
+.rot-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 15px; }
+
+.rot-tag {
+  font-family: var(--display);
+  font-size: 12.5px;
+  letter-spacing: 1.4px;
+  border: 1.5px solid var(--line);
+  color: var(--ink-soft);
+  border-radius: 4px;
+  padding: 4px 10px 2px;
+}
+
+.rot-tag.sn { color: var(--spray); border-color: var(--spray); }
+.rot-tag.gr { color: #7fc98a; border-color: #3d6a46; }
+.rot-tag.nat { color: var(--clay); border-color: var(--clay); }
+
+/* step zones — no glyph, the edge lights up instead */
+.rot-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 96px;
+  z-index: 3;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.rot-zone.l { left: 0;  background: linear-gradient(90deg,  rgba(0, 0, 0, 0.55), transparent); }
+.rot-zone.r { right: 0; background: linear-gradient(270deg, rgba(0, 0, 0, 0.55), transparent); }
+.rot-zone.l:hover { background: linear-gradient(90deg,  rgba(43, 111, 212, 0.45), transparent); }
+.rot-zone.r:hover { background: linear-gradient(270deg, rgba(43, 111, 212, 0.45), transparent); }
+
+.rot-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 4px 2px 8px;
+  justify-content: space-between;
+}
+
+.rot-thumbs button {
+  flex: 0 0 auto;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  line-height: 0;
+  opacity: 0.45;
+  transition: opacity 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+}
+
+.rot-thumbs button:hover { opacity: 0.9; transform: translateY(-3px); }
+.rot-thumbs button.on { opacity: 1; border-color: var(--spray); }
+.rot-thumbs img { height: 118px; width: auto; border-radius: 3px; display: block; }
+
+@media (max-width: 700px) {
+  .rot-stage { grid-template-columns: 1fr; padding: 26px 22px; min-height: 0; }
+  .rot-card { height: 250px; justify-self: center; }
+  .rot-zone { width: 56px; }
+  .rot-thumbs { overflow-x: auto; justify-content: flex-start; }
+  .rot-thumbs img { height: 84px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rot-thumbs button { transition: none; }
+}
+
+/* ---------- Checklist search (homepage) ----------
+   A plain GET form to checklist.html?q=… — works without JavaScript.
+   The recess is lit from inside and out: the drip strokes sit in the light. */
+
+.home-search { padding: 4px 0 34px; }
+
+.search-pill {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: #05070c;
+  border: 2px solid var(--spray);
+  box-shadow:
+    inset 0 0 26px rgba(79, 157, 255, 0.26),
+    inset 0 2px 9px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(79, 157, 255, 0.20);
+}
+
+.search-pill svg {
+  color: var(--spray);
+  flex-shrink: 0;
+}
+
+/* the drip font has descenders and actual drips — it needs the height */
+.search-pill input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  font-family: var(--graffiti);
+  font-size: clamp(26px, 4.6vw, 36px);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  line-height: 1.35;
+  padding: 2px 0;
+}
+
+.search-pill input::placeholder { color: #3a4b66; }
+
+/* the browser's own clear button fights the dark recess */
+.search-pill input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+@media (max-width: 640px) {
+  .search-pill { padding: 12px 20px; gap: 11px; }
+}
+
+/* ---------- Collection panels ---------- */
 
 .panels {
   display: flex;
@@ -535,10 +690,6 @@ a.panel:hover {
   .card-prop-2 { display: none; }
   .two-up .panel-inner { max-width: 100%; }
   .two-up .card-prop { right: -6%; transform: translateY(-50%) rotate(2.2deg); }
-
-  .stats { gap: 22px; }
-
-  .stat b { font-size: 32px; }
 }
 
 /* ---------- Checklist controls & rows ---------- */
