@@ -680,6 +680,33 @@ a.panel:hover {
   flex-shrink: 0;
 }
 
+/* rows whose card is scanned and on the site get a button to see it */
+.scan-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  padding: 5px 12px 4px 10px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.scan-btn:hover,
+.scan-btn:focus-visible {
+  color: #0a0f18;
+  background: var(--spray);
+  border-color: var(--spray);
+}
+
+.scan-btn svg { display: block; }
+
 .pill-have { background: rgba(79, 157, 255, 0.14); color: var(--spray); }
 .pill-want { background: rgba(201, 116, 74, 0.14); color: var(--clay); }
 

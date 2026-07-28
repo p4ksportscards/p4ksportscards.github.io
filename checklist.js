@@ -109,7 +109,31 @@
         '<span class="check-sub">' + esc(seasonLabel(c.season)) + (c.mft ? ' · ' + esc(c.mft) : '') +
           (c.team ? ' · ' + esc(c.team) : '') + '</span>' +
         (badges ? '<span class="check-badges">' + badges + '</span>' : '') +
-      '</div>' + own + '</div>';
+      '</div>' + scanBtn(c) + own + '</div>';
+  }
+
+  // ---- rows that have a scan on the site get a button to see it ----
+  // data/gallery-map.js is generated from the gallery pages by
+  // tools/build-gallery-map.ps1 and keyed on season|num|set, the same three
+  // fields every checklist row carries.
+  function scanFor(c) {
+    var g = window.P4K_GALLERY;
+    if (!g || !g[current]) return null;
+    return g[current][c.season + '|' + c.num + '|' + c.set] || null;
+  }
+
+  function scanBtn(c) {
+    var hit = scanFor(c);
+    if (!hit) return '';
+    var alt = [c.player, seasonLabel(c.season), c.set, c.num ? '#' + c.num : '']
+                .filter(Boolean).join(' ') + ' — front and back';
+    return '<button class="scan-btn" type="button" data-scan="' + esc(hit.img) +
+           '" data-alt="' + esc(alt) + '" title="See the scan">' +
+           '<svg viewBox="0 0 24 24" aria-hidden="true" width="17" height="17">' +
+           '<path d="M4 8h3l1.2-2h7.6L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" ' +
+           'fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>' +
+           '<circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.7"/>' +
+           '</svg><span>scan</span></button>';
   }
 
   function render() {
@@ -185,6 +209,16 @@
     chip.addEventListener('click', function () {
       switchCollection(chip.getAttribute('data-coll'));
     });
+  });
+
+  // Rows are re-rendered constantly, so listen on the container instead of
+  // binding to every button.
+  listEl.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest ? e.target.closest('.scan-btn') : null;
+    if (!btn) return;
+    if (window.p4kLightbox) {
+      window.p4kLightbox.open(btn.getAttribute('data-scan'), btn.getAttribute('data-alt'));
+    }
   });
 
   [playerSel, seasonSel, mftSel, setSel, settypeSel].forEach(function (s) {

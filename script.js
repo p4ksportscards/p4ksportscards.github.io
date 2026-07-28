@@ -12,13 +12,23 @@
     document.body.style.overflow = '';
   }
 
+  function open(src, alt) {
+    if (!src) return;
+    overlayImg.src = src;
+    overlayImg.alt = alt || '';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Shared so the checklist can open a scan too, rather than shipping a
+  // second lightbox. Its rows are rendered on the fly, so it can't rely on
+  // the load-time binding below.
+  window.p4kLightbox = { open: open, close: close };
+
   document.querySelectorAll('.card.scan').forEach(function (card) {
     card.addEventListener('click', function () {
       var img = card.querySelector('img');
-      overlayImg.src = card.getAttribute('data-full');
-      overlayImg.alt = img ? img.alt : '';
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      open(card.getAttribute('data-full'), img ? img.alt : '');
     });
   });
 
