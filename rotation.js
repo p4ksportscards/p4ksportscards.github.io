@@ -23,15 +23,23 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  // The sheet pads single-year products to "1996-000" so Excel sorts them among
+  // the two-year seasons. Sorting device, not part of the card's name - strip it
+  // for display, same as checklist.js does. Anchored to the end, so a set called
+  // "Deathwatch 2000" is left alone.
+  function seasonLabel(s) {
+    return String(s == null ? '' : s).replace(/-000$/, '');
+  }
+
   thumbs.innerHTML = F.map(function (c, j) {
-    return '<button type="button" data-i="' + j + '" aria-label="' + esc(c.season + ' ' + c.set) + '">' +
+    return '<button type="button" data-i="' + j + '" aria-label="' + esc(seasonLabel(c.season) + ' ' + c.set) + '">' +
            '<img src="images/favs/t-' + esc(c.slug) + '.jpg" alt="" loading="lazy"></button>';
   }).join('');
 
   function paint() {
     var c = F[i];
     card.src = 'images/favs/' + c.slug + '.jpg';
-    card.alt = c.season + ' ' + c.set + (c.num ? ' #' + c.num : '') + ', Shaquille O’Neal';
+    card.alt = seasonLabel(c.season) + ' ' + c.set + (c.num ? ' #' + c.num : '') + ', Shaquille O’Neal';
 
     var tags = '';
     if (c.sn)     tags += '<span class="rot-tag sn">' + esc(c.sn) + '</span>';
@@ -39,7 +47,7 @@
     if (c.natl)   tags += '<span class="rot-tag nat">' + esc(c.natl) + '</span>';
 
     info.innerHTML =
-      '<div class="rot-year">' + esc(c.season) + '</div>' +
+      '<div class="rot-year">' + esc(seasonLabel(c.season)) + '</div>' +
       '<div class="rot-set">' + esc(c.set) + (c.num ? ' · #' + esc(c.num) : '') + '</div>' +
       (tags ? '<div class="rot-tags">' + tags + '</div>' : '');
 
