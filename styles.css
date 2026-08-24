@@ -226,7 +226,12 @@ a.chip { display: inline-block; text-decoration: none; }
   box-shadow: 2px 2px 0 rgba(43, 111, 212, 0.4);
 }
 
-.empty-note {
+/* Two different jobs, deliberately two classes. .empty-note is the filter's
+   "nothing here yet" state and script.js shows and hides it. .grid-note is a
+   standing caption under a gallery grid — it must never be hidden, which is
+   exactly what happened while it shared the .empty-note class. */
+.empty-note,
+.grid-note {
   font-family: var(--marker);
   color: var(--ink-soft);
   font-size: 16px;
@@ -527,7 +532,8 @@ a.panel:hover {
   text-shadow: 3px 3px 0 rgba(43, 111, 212, 0.4);
 }
 
-.p-ej h2 { font-size: clamp(28px, 5.5vw, 46px); }
+.p-ej h2,
+.p-international h2 { font-size: clamp(28px, 5.5vw, 46px); }
 
 .panel-tag { font-family: var(--marker); color: var(--spray); font-size: 17px; }
 
@@ -536,6 +542,16 @@ a.panel:hover {
   font-size: 16px;
   letter-spacing: 1.5px;
   color: var(--ink-soft);
+}
+
+/* International is a slice of the Shaq collection, not a fifth one. Its counts
+   are already inside Shaq's, so the panel says so out loud — otherwise the
+   figures read as adding to the site total, which they don't. */
+.panel-note {
+  font-family: var(--marker);
+  font-size: 13.5px;
+  color: var(--clay);
+  letter-spacing: 0.3px;
 }
 
 .enter {
@@ -591,6 +607,27 @@ a.panel:hover {
 .tally-row:hover {
   border-color: var(--spray);
   transform: translateX(4px);
+}
+
+/* International is a slice of the Shaq collection, not a fifth one, so its row
+   hangs off Shaq's instead of standing beside it — indented, quieter, dashed.
+   Its figures are already inside Shaq's above and are deliberately absent from
+   the site total for that reason. */
+.tally-row.tally-sub {
+  margin-left: 26px;
+  margin-top: -4px;
+  background: transparent;
+  border-style: dashed;
+}
+
+.tally-sub .tally-name {
+  font-size: 19px;
+  color: var(--ink-soft);
+}
+
+.tally-sub .tally-name::before {
+  content: "↳ ";
+  color: var(--clay);
 }
 
 .tally-name {
@@ -664,6 +701,7 @@ a.panel:hover {
   }
   .tally-cat { text-align: left; }
   .tally-cat b { display: inline; margin-right: 5px; }
+  .tally-row.tally-sub { margin-left: 12px; }
 }
 
 .about {
