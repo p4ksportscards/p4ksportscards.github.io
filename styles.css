@@ -544,16 +544,6 @@ a.panel:hover {
   color: var(--ink-soft);
 }
 
-/* International is a slice of the Shaq collection, not a fifth one. Its counts
-   are already inside Shaq's, so the panel says so out loud — otherwise the
-   figures read as adding to the site total, which they don't. */
-.panel-note {
-  font-family: var(--marker);
-  font-size: 13.5px;
-  color: var(--clay);
-  letter-spacing: 0.3px;
-}
-
 .enter {
   font-family: var(--display);
   font-size: 16px;
