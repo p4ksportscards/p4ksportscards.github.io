@@ -65,9 +65,17 @@
     if (settypeSel.value && c.settype !== settypeSel.value) return false;
     if (ownMode === 'have' && !c.have) return false;
     if (ownMode === 'want' && !c.want) return false;
-    if (flags.sn && !(c.sn || c.snt)) return false;
+    // Matches anything the row shows a blue badge for: numbered by hand or by
+    // machine (SN / SN TYPE), or with a stated run in PRINT. A card can have a
+    // print run recorded without its own copy number, and the toggle used to
+    // miss all 7,747 of those while the row plainly displayed /150.
+    if (flags.sn && !(c.sn || c.snt || c.print)) return false;
     if (flags.graded && !c.graded) return false;
-    if (flags.intl && !c.natl) return false;
+    // NATIONALITY is the language a card was printed in, not a flag. "English"
+    // is the domestic default and sits on 61 US rows, so a non-empty test swept
+    // them in here. Same trap the gallery chip was fixed for in July 2026;
+    // "Northern European (English)" is a foreign release and still counts.
+    if (flags.intl && !(c.natl && c.natl !== 'English')) return false;
     if (q.value) {
       var hay = (c.player + ' ' + c.season + ' ' + c.mft + ' ' + c.set + ' ' + c.num + ' ' +
                  c.type + ' ' + c.feat + ' ' + c.team + ' ' + c.natl + ' ' + c.settype).toLowerCase();
