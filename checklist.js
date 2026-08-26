@@ -90,9 +90,12 @@
   function rowHtml(c) {
     var badges = '';
     if (c.type) badges += badge(esc(c.type), 'b-sn');
-    if (c.sn) badges += badge('/' + esc(c.sn), 'b-sn');
-    else if (c.snt) badges += badge('serial #’d', 'b-sn');
-    if (c.print && !c.sn) badges += badge('print run ' + esc(c.print), '');
+    // PRINT is how many were made; SN is which copy this one is. The badge
+    // states the run - /75 means 75 of them exist - so it reads off PRINT and
+    // never off SN. Reading SN put "/34" on a card that is 34 of 75, and the
+    // !c.sn guard then suppressed the only number that mattered.
+    if (c.print) badges += badge('/' + esc(c.print), 'b-sn');
+    else if (c.sn || c.snt) badges += badge('serial #’d', 'b-sn');
     if (c.graded) badges += badge('graded', 'b-graded');
     if (c.natl) badges += badge(esc(c.natl), 'b-intl');
     if (c.auto) badges += badge('auto', 'b-sn');
