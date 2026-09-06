@@ -120,7 +120,14 @@
         '<span class="check-sub">' + esc(seasonLabel(c.season)) + (c.mft ? ' · ' + esc(c.mft) : '') +
           (c.team ? ' · ' + esc(c.team) : '') + '</span>' +
         (badges ? '<span class="check-badges">' + badges + '</span>' : '') +
-      '</div>' + scanBtn(c) + own + '</div>';
+      '</div>' +
+      // scan and the have/want pill travel together on the right. The pill slot
+      // is always rendered, empty or not, so the scan button lands in the same
+      // column on every row instead of chasing the length of the card name.
+      '<div class="check-right">' + scanBtn(c) +
+        '<span class="check-own">' + own + '</span>' +
+      '</div>' +
+    '</div>';
   }
 
   // ---- rows that have a scan on the site get a button to see it ----

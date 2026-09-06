@@ -829,6 +829,29 @@ a.panel:hover {
   flex-direction: column;
   gap: 3px;
   min-width: 0;
+  /* Take the slack. Without this the row's space-between spreads the children
+     out and the scan button sits wherever the card name happens to end, so it
+     lands in a different place on every row. */
+  flex: 1 1 auto;
+}
+
+/* The right-hand pair: scan button, then the have/want pill. */
+.check-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Rendered on every row even when there is no pill, so the pill column has a
+   constant width and the scan button beside it lines up down the page. Sized
+   for the widest pill, "have x2". */
+.check-own {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 74px;
+  flex-shrink: 0;
 }
 
 .check-main strong { font-size: 15px; line-height: 1.3; }
@@ -894,6 +917,13 @@ a.panel:hover {
 
 .pill-have { background: rgba(79, 157, 255, 0.14); color: var(--spray); }
 .pill-want { background: rgba(201, 116, 74, 0.14); color: var(--clay); }
+
+/* On a phone the reserved pill column costs more than the alignment is worth,
+   so give the text back its room. */
+@media (max-width: 560px) {
+  .check-own { min-width: 0; }
+  .check-right { gap: 7px; }
+}
 
 .show-more {
   display: block;
