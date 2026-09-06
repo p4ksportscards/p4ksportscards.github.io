@@ -121,12 +121,11 @@
           (c.team ? ' · ' + esc(c.team) : '') + '</span>' +
         (badges ? '<span class="check-badges">' + badges + '</span>' : '') +
       '</div>' +
-      // scan and the have/want pill travel together on the right. The pill slot
-      // is always rendered, empty or not, so the scan button lands in the same
-      // column on every row instead of chasing the length of the card name.
-      '<div class="check-right">' + scanBtn(c) +
-        '<span class="check-own">' + own + '</span>' +
-      '</div>' +
+      // Two fixed-width cells, always rendered even when empty. The row is a
+      // grid, so scan sits in its own column and the pill in another - both
+      // land at the same x on every row, whether or not the row has either.
+      '<span class="check-scan">' + scanBtn(c) + '</span>' +
+      '<span class="check-own">' + own + '</span>' +
     '</div>';
   }
 
