@@ -131,12 +131,23 @@
 
   // ---- rows that have a scan on the site get a button to see it ----
   // data/gallery-map.js is generated from the gallery pages by
-  // tools/build-gallery-map.ps1 and keyed on season|num|set, the same three
-  // fields every checklist row carries.
+  // tools/build-gallery-map.ps1 and keyed on the five fields below.
+
+  // A card's identity. season|num|set is NOT unique: a card and its autographed
+  // twin share all three, and so do the five serial-numbered SkyBox LE #55
+  // parallels. Every row in the workbook is a different card, and FEATURES and
+  // PRINT are how the sheet says which - so they are part of the key. Keying on
+  // three fields opened one card's scan from another card's row.
+  //
+  // Must stay identical to CardKey() in build-gallery.ps1 and build-favs.ps1.
+  function cardKey(c) {
+    return [c.season, c.num, c.set, c.feat || '', c.print || ''].join('|');
+  }
+
   function scanFor(c) {
     var g = window.P4K_GALLERY;
     if (!g || !g[current]) return null;
-    return g[current][c.season + '|' + c.num + '|' + c.set] || null;
+    return g[current][cardKey(c)] || null;
   }
 
   function scanBtn(c) {
